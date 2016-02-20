@@ -5,28 +5,7 @@ var ship = angular.module('ship', [
 	'directives'
 ]);
 
-ship.config(function ($routeProvider, $stateProvider) {
-    /*$routeProvider.when('/books/:isbn', {
-     templateUrl: 'templates/book_details.html',
-     controller: 'BookDetailsCtrl'
-     })*/
-    // $routeProvider
-    //     .when('/apps', {
-    //         templateUrl: 'views/apps.html',
-    //         controller: 'appsCtrl'
-    //     })
-    //     .when('/apps/:appId', {
-    //         templateUrl: 'views/appDetail.html',
-    //         controller: 'appDetailCtrl'
-    //     })
-    //     .when('/build:buildId', {
-    //         templateUrl: 'views/build.html',
-    //         controller: 'buildCtrl'
-    //     })
-    //     .otherwise({
-    //         redirectTo: '/apps'
-    //     });
-
+ship.config(function ($stateProvider) {
     $stateProvider
         .state('apps', {
             url: '/apps',

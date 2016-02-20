@@ -1,5 +1,8 @@
 ship.controller('appsCtrl', appsCtrl);
 
-function appsCtrl ($scope, $location, $routeParams, $state, shipApi) {
-    $scope.apps = shipApi.getApps();    
+function appsCtrl ($scope, $location, $state, shipApiUiWrapper) {
+
+    shipApiUiWrapper.getApps(function (apps) {
+        $scope.apps = apps;
+    });
 }

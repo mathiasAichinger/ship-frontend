@@ -2,12 +2,9 @@
 
 ship.factory('shipApi', shipApi);
 
-function shipApi () {
+function shipApi ($http) {
 
-    var _apps = [
-        { id: 4711, name: 'Runtastic', image: 'http://upload.wikimedia.org/wikipedia/en/6/6b/Runtastic_Logo.png' },
-        { id: 1, name: 'NETx Touch', image: 'http://lh4.ggpht.com/jFT8tFre_FEZPcgWZkkuSA6RW7Dva-BKMAaQMh_zIr8LQu2Dm9UcmLXP86Opv5FqFs-Q=w300-rw' }
-    ];
+    var _serverUrl = 'http://192.168.1.82:3001/api/';
 
     function _addApp (app) {
         if (app) {
@@ -27,18 +24,26 @@ function shipApi () {
         }
     }
 
-    function _getApp (id, appCallback) {
-        var callback = appCallback || angular.noop;
+    function _getApp (id, successCallback, errorCallback) {
+        var successCb = successCallback || angular.noop;
+        var errorCb = errorCallback || angular.noop;
 
-        _apps.forEach(function (app) {
-            if (app.id == id) {
-                callback(app);
-            }
+        $http.get(_serverUrl + 'apps/' + id).then(function success(response) {
+            successCb(response);
+        }, function error (response) {
+            errorCb(response);
         });
     }
 
-    function _getApps () {
-        return _apps;
+    function _getApps (successCallback, errorCallback) {
+        var successCb = successCallback || angular.noop;
+        var errorCb = errorCallback || angular.noop;
+
+        $http.get(_serverUrl + 'apps').then(function success(response) {
+            successCb(response);
+        }, function error (response) {
+            errorCb(response);
+        });
     }
 
     return {

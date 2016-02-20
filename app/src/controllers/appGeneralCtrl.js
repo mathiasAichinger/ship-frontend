@@ -1,9 +1,11 @@
 ship.controller('appGeneralCtrl', appGeneralCtrl);
 
-function appGeneralCtrl ($scope, $state, $stateParams, notify, shipApi) {
-    shipApi.getApp($stateParams.appId, function (app) {
+function appGeneralCtrl ($scope, $stateParams, notify, shipApiUiWrapper) {
+    shipApiUiWrapper.getApp($stateParams.appId, function (app) {
         if (app) {
             $scope.app = app;
+        } else {
+            $scope.app = {};
         }
     });
 

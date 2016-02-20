@@ -14,13 +14,22 @@ function notify () {
     }
 
     return {
-        notifySuccess: function (text, title) {
+        success: function (text, title) {
+            if (!title) {
+                title = 'Success';
+            }
             _showNotification('success', text, title);
         },
-        notifyWarn: function (text, title) {
+        warn: function (text, title) {
+            if (!title) {
+                title = 'Warning';
+            }
             _showNotification('warning', text, title);
         },
-        notifyError: function (text, title) {
+        error: function (text, title) {
+            if (!title) {
+                title = 'Error';
+            }
             _showNotification('error', text, title);
         }
     }
