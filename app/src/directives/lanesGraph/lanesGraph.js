@@ -5,9 +5,12 @@ angular.module('directives.lanesGraph', ['d3'])
             templateUrl: 'src/directives/lanesGraph/views/lanesGraphView.html',
             controller: 'lanesGraphCtrl',
             scope: {
-                id: '@',
-                control: '&',
-                title: '@'
+                appId: '=',
+                viewMode: '=',
+                mode: '=',
+                width: '=',
+                height: '=',
+                control: '&'
             }
         };
     }]);
