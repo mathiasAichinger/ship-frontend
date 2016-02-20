@@ -1,4 +1,7 @@
-var ship = angular.module('ship', ['ngRoute']);
+var ship = angular.module('ship', [
+    'ngRoute',
+     'd3'
+ ]);
 
 ship.config(function ($routeProvider) {
    /*$routeProvider.when('/books/:isbn', {

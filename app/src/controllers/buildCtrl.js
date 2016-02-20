@@ -1,6 +1,6 @@
 ship.controller('buildCtrl', buildCtrl);
 
-function buildCtrl ($scope, $location, $routeParams) {
+function buildCtrl ($scope, $location, $routeParams, d3) {
 
     /*------------------------------------------------------------------------------------------------------------------
      Variables
@@ -12,6 +12,7 @@ function buildCtrl ($scope, $location, $routeParams) {
     init();
     function init() {
         console.log("buildCtrl init id: ", $routeParams.buildId);
+        console.log(d3);
     }
 
 
