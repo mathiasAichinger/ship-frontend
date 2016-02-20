@@ -1,7 +1,7 @@
 ship.controller('navCtrl', navCtrl);
 
 function navCtrl ($scope, $state, pathParser) {
-    $state.go('apps');
+    $state.go('apps.show');
 
     $scope.contains = function (link) {
         return pathParser.contains(link);

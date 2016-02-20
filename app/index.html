@@ -43,7 +43,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li ng-class="{ active: contains('apps') }"><a href="#/apps">Apps <span class="sr-only">(current)</span></a></li>
+            <li ng-class="{ active: contains('apps') }"><a ui-sref="apps.show">Apps <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
@@ -77,6 +77,7 @@
 <script src="src/services/shipApiUiWrapper.js"></script>
 <script src="src/services/notify.js"></script>
 <script src="src/services/pathParser.js"></script>
+<script src="src/services/restConverter.js"></script>
 <script src="src/services/d3.js"></script>
 
 <!-- directives -->
@@ -88,7 +89,8 @@
 <!-- controllers -->
 <script src="src/controllers/navCtrl.js"></script>
 
-<script src="src/controllers/appsCtrl.js"></script>
+<script src="src/controllers/appListCtrl.js"></script>
+<script src="src/controllers/appAddCtrl.js"></script>
 <script src="src/controllers/appGeneralCtrl.js"></script>
 <script src="src/controllers/appDetailCtrl.js"></script>
 <script src="src/controllers/buildsCtrl.js"></script>

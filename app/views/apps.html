@@ -1,18 +1,3 @@
-<div ng-show="apps">
-    <h1 class="page-header">Apps</h1>
-
-    <div class="row placeholders">
-        <a ng-repeat="app in apps" ui-sref="app.general({ appId: app.id })">
-            <div class="col-xs-6 col-sm-3 placeholder">
-                <img ng-src="{{app.iconUrl}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                <h4 ng-bind="app.name"></h4>
-                <span class="text-muted" ng-bind="app.description"></span>
-            </div>
-        </a>
-    </div>
-</div>
-
-<div ng-hide="apps">
-    <i class="fa fa-circle-o-notch fa-spin fa-2x loading-icon"></i>
-    <h1 class="page-header">Loading...</h1>
+<div class="tab-content">
+    <div style="margin-top: 0;" ui-view="detailView" class="detail-view"></div>
 </div>

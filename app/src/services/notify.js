@@ -26,11 +26,11 @@ function notify () {
             }
             _showNotification('warning', text, title);
         },
-        error: function (text, title) {
+        error: function (text, statusCode, title) {
             if (!title) {
                 title = 'Error';
             }
-            _showNotification('error', text, title);
+            _showNotification('error', text, title + ' ' + statusCode);
         }
     }
 }

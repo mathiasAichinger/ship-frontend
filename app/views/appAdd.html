@@ -1,0 +1,20 @@
+<h1 class="page-header">Add App</h1>
+
+<button ng-disabled="addAppForm.$invalid" ng-click="saveApp()" type="button" class="btn btn-default">Save</button>
+
+<form novalidate ng-cloak name="addAppForm" class="form-horizontal">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input ng-model="app.name" type="text" class="form-control" id="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Key</label>
+      <input ng-model="app.key" type="text" class="form-control" id="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea ng-model="app.description" class="form-control" rows="5" id="description"></textarea>
+    </div>
+</form>

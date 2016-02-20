@@ -15,9 +15,7 @@ function buildCtrl ($scope, $location, $routeParams, d3) {
     function init() {
         console.log("buildCtrl init id: ", $routeParams.buildId);
         console.log(d3);
-    }
-
-    
+    }    
 
     /*------------------------------------------------------------------------------------------------------------------
      Scope Methods

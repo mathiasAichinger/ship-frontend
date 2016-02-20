@@ -11,8 +11,25 @@ ship.config(function ($stateProvider) {
             url: '/apps',
             views: {
                 'mainView': {
-                    templateUrl: 'views/apps.html',
+                    templateUrl: 'views/apps.html'
+                }
+            }
+        })
+        .state('apps.show', {
+            url: '/show',
+            views: {
+                'detailView': {
+                    templateUrl: 'views/appList.html',
                     controller: 'appsCtrl'
+                }
+            }
+        })
+        .state('apps.add', {
+            url: '/add',
+            views: {
+                'detailView': {
+                    templateUrl: 'views/appAdd.html',
+                    controller: 'appAddCtrl'
                 }
             }
         })
@@ -28,23 +45,15 @@ ship.config(function ($stateProvider) {
         .state('app.general', {
             url: '/general',
             views: {
-                'mainView': {
-                    templateUrl: 'views/appDetail.html',
-                    controller: 'appDetailCtrl'
-                },
                 'detailView': {
                     templateUrl: 'views/appGeneral.html',
                     controller: 'appGeneralCtrl'
-                },
+                }
             }
         })
         .state('app.lanes', {
             url: '/lanes',
             views: {
-                'mainView': {
-                    templateUrl: 'views/appDetail.html',
-                    controller: 'appDetailCtrl'
-                },
                 'detailView': {
                     template: 'LANES'
                 }
@@ -53,10 +62,6 @@ ship.config(function ($stateProvider) {
         .state('app.builds', {
             url: '/builds',
             views: {
-                'mainView': {
-                    templateUrl: 'views/appDetail.html',
-                    controller: 'appDetailCtrl'
-                },
                 'detailView': {
                     templateUrl: 'views/builds.html',
                     controller: 'buildsCtrl'
@@ -66,10 +71,6 @@ ship.config(function ($stateProvider) {
         .state('app.logs', {
             url: '/logs',
             views: {
-                'mainView': {
-                    templateUrl: 'views/appDetail.html',
-                    controller: 'appDetailCtrl'
-                },
                 'detailView': {
                     template: 'LOGS'
                 }
