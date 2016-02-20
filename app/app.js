@@ -5,11 +5,16 @@ ship.config(function ($routeProvider) {
        templateUrl: 'templates/book_details.html',
        controller: 'BookDetailsCtrl'
    })*/
-   $routeProvider.when('/jobs', {
-       templateUrl: 'views/jobs.html',
-       controller: 'jobsCtrl'
-    })
-   .otherwise( {
-       redirectTo: '/jobs'
-   });
+   $routeProvider
+       .when('/jobs', {
+           templateUrl: 'views/jobs.html',
+           controller: 'jobsCtrl'
+        })
+        .when('/build:buildId', {
+            templateUrl: 'views/build.html',
+            controller: 'buildCtrl'
+        })
+        .otherwise( {
+           redirectTo: '/jobs'
+       });
 });
