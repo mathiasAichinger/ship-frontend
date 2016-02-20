@@ -1,6 +1,6 @@
 <div ng-show="apps && apps.length > 0">
     <h1 class="page-header">Apps</h1>
-    <a ui-sref="apps.add" type="button" class="btn btn-default">Add App</a>
+    <a ui-sref="apps.add" type="button" class="btn btn-default"><i class="fa fa-plus"></i></a>
 
     <div class="placeholders">
         <a ng-repeat="app in apps" ui-sref="app.general({ appId: app.id })">
@@ -11,24 +11,6 @@
             </div>
         </a>
     </div>
-
-    <!-- <div ng-repeat="app in apps">
-    <div style="text-align: center;" class="col-sm-4 placeholder">
-    <img ng-src="{{app.iconUrl}}" width="144" height="144" class="img-responsive" alt="Generic placeholder thumbnail">
-    <h4 ng-bind="x"></h4>
-    <span class="text-muted" ng-bind="app.description"></span>
-</div>
-</div> -->
-
-<!-- <div class="placeholders">
-<a ng-repeat="app in apps" ui-sref="app.general({ appId: app.id })">
-<div class="col-sm-4 placeholder">
-<img ng-src="{{app.iconUrl}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-<h4 ng-bind="app.name"></h4>
-<span class="text-muted" ng-bind="app.description"></span>
-</div>
-</a>
-</div> -->
 </div>
 
 <div ng-hide="apps || apps.length > 0">

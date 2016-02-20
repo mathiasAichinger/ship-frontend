@@ -58,7 +58,7 @@ function shipApi ($http) {
         var successCb = successCallback || angular.noop;
         var errorCb = errorCallback || angular.noop;
 
-        $http.get(_serverUrl + 'apps').then(function success(response) {
+        $http.get(_serverUrl + 'apps?include=builds').then(function success(response) {
             successCb(response);
         }, function error (response) {
             errorCb(response);
@@ -69,7 +69,7 @@ function shipApi ($http) {
         var successCb = successCallback || angular.noop;
         var errorCb = errorCallback || angular.noop;
 
-        $http.get(_serverUrl + 'lane_templates/'+ id + '?include=action_templates').then(function success(response) {
+        $http.get(_serverUrl + 'lane_templates/' + id + '?include=action_templates').then(function success(response) {
             successCb(response);
         }, function error (response) {
             errorCb(response);

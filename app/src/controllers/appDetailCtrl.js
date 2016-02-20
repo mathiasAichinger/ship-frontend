@@ -3,6 +3,7 @@ ship.controller('appDetailCtrl', appDetailCtrl);
 function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrapper) {
     $scope.appId = $stateParams.appId;
     $scope.appLoaded = false;
+    $scope.isRemoving = false;
 
     shipApiUiWrapper.getApp($scope.appId, function (app) {
         if (app) {
@@ -14,7 +15,9 @@ function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrappe
     });
 
     $scope.removeApp = function () {
+        $scope.isRemoving = true;
         shipApiUiWrapper.removeApp($scope.app, function (success) {
+            $scope.isRemoving = false;
             if (success) {
                 $('#removeAppModal').modal('hide');
                 $state.go('apps.show');

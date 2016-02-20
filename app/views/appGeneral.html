@@ -1,11 +1,21 @@
-<button ng-disabled="!appLoaded" ng-click="saveApp()" type="button" class="btn btn-default">Save</button>
+<button ng-disabled="!appLoaded" ng-click="saveApp()" type="button" class="btn btn-default"><i class="fa fa-floppy-o"></i></button>
 
 <div class="form-group">
-  <label for="name">Name</label>
-  <input ng-model="app.name" type="text" class="form-control" id="name">
+    <label for="name">Name</label>
+    <input ng-model="app.name" type="text" class="form-control" id="name">
 </div>
 
 <div class="form-group">
-  <label for="description">Description</label>
-  <textarea ng-model="app.description" class="form-control" rows="5" id="description"></textarea>
+    <label for="name">Key</label>
+    <input ng-model="app.key" type="text" class="form-control" id="key" required>
+</div>
+
+<div class="form-group">
+    <label for="description">Description</label>
+    <textarea ng-model="app.description" class="form-control" rows="5" id="description"></textarea>
+</div>
+
+<div class="form-group">
+    <label for="iconUrl">Icon URL</label>
+    <input ng-model="app.iconUrl" class="form-control" id="iconUrl"></input>
 </div>

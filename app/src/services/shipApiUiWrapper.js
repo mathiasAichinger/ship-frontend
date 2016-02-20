@@ -63,7 +63,16 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
                 cb(null);
             }
         }, function (response) {
-            notify.error('Could not get app with ID ' + id + '. Please try again later.', response.status);
+            switch (response.status) {
+                case 404: {
+                    notify.error('App with ID ' + id + ' could not be found.', response.status);
+                    break;
+                }
+                default: {
+                    notify.error('App with ID ' + id + ' could not be found.', response.status);
+                    break;
+                }
+            }
             cb(null);
         });
     }
