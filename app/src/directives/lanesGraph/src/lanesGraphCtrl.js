@@ -118,17 +118,31 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
                         laneTemplate.action_templates.forEach(function(a) {
 
                             // append action logo or default circle
+
                             if (a.icon_url == null) {
                                 svg.append('circle')
+                                    .attr('id', a.id)
                                     .attr('class', 'lanes-graph-action')
                                     .attr("cx", function() {
                                         return (parseInt(xLaneOffset));
                                     })
                                     .attr("cy", yActionOffset)
-                                    .attr("r", 30);
+                                    .attr("r", 30)
+                                    .on({
+                                        "mouseover": function(d,i) {
+                                            mouseoverAction(this);
+                                        },
+                                        "mouseout":  function() {
+                                            mouseoutAction(this);
+                                        },
+                                        "click": function() {
+                                            onActionClick(this);
+                                        }
+                                    });
 
                             } else {
                                 svg.append('image')
+                                    .attr('id', a.id)
                                     .attr('class', 'lanes-graph-action')
                                     .attr('x', function() {
                                         return (parseInt(xLaneOffset) - 22);
@@ -136,8 +150,57 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
                                     .attr('y', yActionOffset - 55)
                                     .attr('width', 100)
                                     .attr('height', 100)
-                                    .attr("xlink:href", a.icon_url);
+                                    .attr("xlink:href", a.icon_url)
+                                    .on({
+                                        "mouseover": function() {
+                                            mouseoverAction(this);
+
+                                        },
+                                        "mouseout":  function() {
+                                            mouseoutAction(this);
+                                        },
+                                        "click": function() {
+                                            onActionClick(this);
+                                        }
+
+                                    });
                             }
+                            function mouseoverAction(element) {
+                                d3.select(element).attr('width', 120);
+                                d3.select(element).attr('height', 120);
+                                var x = parseInt(d3.select(element).style('x'));
+                                var y = parseInt(d3.select(element).style('y'));
+                                x = x - 5;
+                                y = y -  10;
+                                d3.select(element).attr('x', x);
+                                d3.select(element).attr('y', y);
+                                var id = d3.select(element).attr('id');
+                            }
+
+                            function mouseoutAction(element) {
+                                d3.select(element).attr('width', 100);
+                                d3.select(element).attr('height', 100);
+                                var x = parseInt(d3.select(element).style('x'));
+                                var y = parseInt(d3.select(element).style('y'));
+                                x = x + 5 ;
+                                y = y +10;
+                                d3.select(element).attr('x', x);
+                                d3.select(element).attr('y', y);
+                            }
+
+                            function onActionClick(element) {
+
+
+                                $($element[0]).find('.lanes-graph-action-detail-body').fadeIn('slow', function() {
+
+                                    $($element[0]).find('.lanes-graph-action-detail-body').delay(3000).fadeOut('slow', function() {
+
+                                    });;
+
+                                });;
+
+                            }
+
 
                             // draw running spinner
                             //TODO: only show if action is in progress!

@@ -18,3 +18,19 @@
     stroke: #5cb85c;
     stroke-width: 1;
 }
+
+.lanes-graph-action-detail-body {
+    display: none;
+    height: 300px;
+    width: 300px;
+    top:25%;
+    left:30%;
+    background: rgba(0,0,0,0.1);
+    position: absolute;
+    border-radius: 25px;
+}
+
+
+.lanes-graph-action-detail-body h6{
+    margin-left: 30px;
+}
