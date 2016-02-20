@@ -53,11 +53,23 @@ function shipApi ($http) {
         });
     }
 
+    function _getLaneTemplate(id, successCallback, errorCallback) {
+        var successCb = successCallback || angular.noop;
+        var errorCb = errorCallback || angular.noop;
+
+        $http.get(_serverUrl + 'lane_templates/'+ id + '?include=action_templates').then(function success(response) {
+            successCb(response);
+        }, function error (response) {
+            errorCb(response);
+        });
+    }
+
     return {
         addApp: _addApp,
         removeApp: _removeApp,
         updateApp: _updateApp,
         getApp: _getApp,
-        getApps: _getApps
+        getApps: _getApps,
+        getLaneTemplate: _getLaneTemplate
     }
 }

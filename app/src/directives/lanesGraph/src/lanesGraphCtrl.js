@@ -17,6 +17,7 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
     ------------------------------------------------------------------------------------------------------------------*/
     var svg;
     var d3;
+    var app;
 
     /*------------------------------------------------------------------------------------------------------------------
      Initialization
@@ -118,8 +119,11 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
             .attr("r", 50)
 
         // append app logo
-        shipApiUiWrapper.getApp($scope.appId, function (app) {
+        shipApiUiWrapper.getApp($scope.appId, function (a) {
 
+            app = a;
+
+            console.log("app: ", app);
             if (app != null) {
                 svg.append('image')
                     .attr('x', function() {
@@ -134,17 +138,26 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
             // bring all actions to front
             appCircle.moveToFront();
 
+
+
+            // append lanes
+            shipApiUiWrapper.getLaneTemplate(1 , function (laneTemplate) {
+                
+
+            });
+
+
+
         });
 
 
 
 
 
-        var xLaneOffset = 200;
 
         // draw lines
+        var xLaneOffset = 200;
         lanes.forEach(function(l) {
-
 
             // draw actions for lane
             actionPositions = [];
@@ -182,13 +195,19 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
             var path = svg.append('path')
                 .datum(actionPositions)
                 .attr('d', line)
-                .attr('class', 'lanes-graph-connection')
-                .attr("stroke-dasharray", totalLength + " " + totalLength)
-                .attr("stroke-dashoffset", totalLength)
-                .transition()
-                .duration(2000)
-                .ease("linear")
-                .attr("stroke-dashoffset", 0);
+                .attr('class', 'lanes-graph-connection');
+
+
+            if ($scope.viewMode == MODE_CONFIG) {
+                path
+                    .attr("stroke-dasharray", totalLength + " " + totalLength)
+                    .attr("stroke-dashoffset", totalLength)
+                    .transition()
+                    .duration(2000)
+                    .ease("linear")
+                    .attr("stroke-dashoffset", 0);
+            }
+
 
             // connect app circle with first action
             if (posFirstAction != null) {

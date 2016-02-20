@@ -66,9 +66,52 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
         });
     }
 
+    function _getLaneTemplate(id, callback) {
+        var cb = callback || angular.noop;
+
+        shipApi.getLaneTemplate(id, function (response) {
+            if (response && response.data && response.data.data) {
+
+                var laneTemplates = [];
+
+                var actionTemplates = [];
+                response.data.included.forEach(function(a) {
+                    actionTemplates.push(
+                        new Action_Template(
+                            a.id,
+                            a.type,
+                            a.attributes['name'],
+                            a.attributes['description'],
+                            a.attributes['icon_url'],
+                            a.relationships.parent.data,
+                            a.relationships.child.data
+                        )
+                    );
+                });
+
+                var laneTemplate = new Lane_Template(
+                    response.data.data.id,
+                    response.data.data.attributes['name'],
+                    response.data.data.attributes['description'],
+                    actionTemplates
+                );
+
+                cb(laneTemplate);
+            } else {
+                notify.warn('Lane template with ID ' + id + ' could not be found.');
+                cb(null);
+            }
+        }, function (response) {
+            notify.error('Could not get lane template with ID ' + id + '. Please try again later.');
+            cb(null);
+        });
+    }
+
+
     return {
         addApp: _addApp,
         getApp: _getApp,
-        getApps: _getApps
+        getApps: _getApps,
+        getLaneTemplate: _getLaneTemplate
     }
 }
