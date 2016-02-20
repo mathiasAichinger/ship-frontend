@@ -10,28 +10,87 @@ ship.config(function ($routeProvider, $stateProvider) {
      templateUrl: 'templates/book_details.html',
      controller: 'BookDetailsCtrl'
      })*/
-    $routeProvider
-        .when('/apps', {
-            templateUrl: 'views/apps.html',
-            controller: 'appsCtrl'
-        })
-        .when('/build:buildId', {
-            templateUrl: 'views/build.html',
-            controller: 'buildCtrl'
-        })
-        .otherwise({
-            redirectTo: '/apps'
-        });
+    // $routeProvider
+    //     .when('/apps', {
+    //         templateUrl: 'views/apps.html',
+    //         controller: 'appsCtrl'
+    //     })
+    //     .when('/apps/:appId', {
+    //         templateUrl: 'views/appDetail.html',
+    //         controller: 'appDetailCtrl'
+    //     })
+    //     .when('/build:buildId', {
+    //         templateUrl: 'views/build.html',
+    //         controller: 'buildCtrl'
+    //     })
+    //     .otherwise({
+    //         redirectTo: '/apps'
+    //     });
 
     $stateProvider
-        .state('appdetail', {
-            url: '/fuuark',
+        .state('apps', {
+            url: '/apps',
             views: {
-                "viewA": {
-                    template: "index.viewA"
+                'mainView': {
+                    templateUrl: 'views/apps.html',
+                    controller: 'appsCtrl'
+                }
+            }
+        })
+        .state('app', {
+            url: '/apps/:appId',
+            views: {
+                'mainView': {
+                    templateUrl: 'views/appDetail.html',
+                    controller: 'appDetailCtrl'
+                }
+            }
+        })
+        .state('app.general', {
+            url: '/general',
+            views: {
+                'mainView': {
+                    templateUrl: 'views/appDetail.html',
+                    controller: 'appDetailCtrl'
                 },
-                "viewB": {
-                    template: "index.viewB"
+                'detailView': {
+                    template: 'GENERAL'
+                }
+            }
+        })
+        .state('app.lanes', {
+            url: '/lanes',
+            views: {
+                'mainView': {
+                    templateUrl: 'views/appDetail.html',
+                    controller: 'appDetailCtrl'
+                },
+                'detailView': {
+                    template: 'LANES'
+                }
+            }
+        })
+        .state('app.builds', {
+            url: '/builds',
+            views: {
+                'mainView': {
+                    templateUrl: 'views/appDetail.html',
+                    controller: 'appDetailCtrl'
+                },
+                'detailView': {
+                    template: 'BUILDS'
+                }
+            }
+        })
+        .state('app.logs', {
+            url: '/logs',
+            views: {
+                'mainView': {
+                    templateUrl: 'views/appDetail.html',
+                    controller: 'appDetailCtrl'
+                },
+                'detailView': {
+                    template: 'LOGS'
                 }
             }
         });

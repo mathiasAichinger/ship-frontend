@@ -96,7 +96,13 @@ body {
 }
 .placeholder {
   margin-bottom: 20px;
+  padding: 12px;
 }
+.placeholder:hover {
+  background-color: #fafafa;
+  cursor:pointer;
+}
+
 .placeholder img {
   display: inline-block;
   border-radius: 50%;

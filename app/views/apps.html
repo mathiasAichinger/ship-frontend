@@ -3,11 +3,13 @@
 <h2 ui-view="viewA"></h2>
 
 <div class="row placeholders">
-    <div ng-repeat="app in apps" class="col-xs-6 col-sm-3 placeholder">
-        <img ng-src="{{app.image}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4 ng-bind="app.name"></h4>
-        <span class="text-muted">Sweet description</span>
-    </div>
+    <a ng-repeat="app in apps" ui-sref="app({ appId: app.id })">
+        <div class="col-xs-6 col-sm-3 placeholder">
+            <img ng-src="{{app.image}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+            <h4 ng-bind="app.name"></h4>
+            <span class="text-muted">Sweet description</span>
+        </div>
+    </a>
     <!-- <div class="col-xs-6 col-sm-3 placeholder">
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
         <h4>Label</h4>

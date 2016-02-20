@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../assets/styles/layout.css"/>
 </head>
-<body ng-app="ship">
+<body ng-app="ship" ng-controller="navCtrl">
     <nav class="navbar navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -22,7 +22,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a ui-sref="index">Dashboard</a></li>
+            <li><a ui-sref="apps">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
@@ -38,13 +38,16 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Jobs <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="#/apps">Apps <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
         </div>
-        <div ng-view class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <!-- <div ng-view class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        </div> -->
+        <div ui-view="mainView" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
         </div>
       </div>
@@ -73,7 +76,10 @@
 <script src="src/directives/lanesGraph/src/lanesGraphCtrl.js"></script>
 
 <!-- controllers -->
+<script src="src/controllers/navCtrl.js"></script>
+
 <script src="src/controllers/appsCtrl.js"></script>
+<script src="src/controllers/appDetailCtrl.js"></script>
 <script src="src/controllers/buildCtrl.js"></script>
 
 </html>

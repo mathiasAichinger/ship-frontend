@@ -1,0 +1,11 @@
+<h1>{{app.name}}</h1>
+<ul class="nav nav-tabs">
+  <li role="presentation" ng-class="{ active: isTabActive('general') }"><a ui-sref="app.general({ appId: app.id })">General Information</a></li>
+  <li role="presentation" ng-class="{ active: isTabActive('lanes') }"><a ui-sref="app.lanes({ appId: app.id })">Lane Templates</a></li>
+  <li role="presentation" ng-class="{ active: isTabActive('builds') }"><a ui-sref="app.builds({ appId: app.id })">Builds</a></li>
+  <li role="presentation" ng-class="{ active: isTabActive('logs') }"><a ui-sref="app.logs({ appId: app.id })">Logs</a></li>
+</ul>
+
+<div class="tab-content">
+    <div ui-view="detailView"></div>
+</div>
