@@ -14,7 +14,8 @@ function restConverter () {
                         'key': app.key,
                         'description': app.description,
                         'icon_url': app.iconUrl
-                    }
+                    },
+                    'relationships.lane_templates.data': app.lane_templates
                 }
             }
         }
@@ -22,7 +23,7 @@ function restConverter () {
 
     function _appFromRest (app) {
         if (app) {
-            return new App(app.id, app.attributes['key'], app.attributes['name'], app.attributes['description'], app.attributes['icon_url'])
+            return new App(app.id, app.attributes['key'], app.attributes['name'], app.attributes['description'], app.attributes['icon_url'], app.relationships.lane_templates.data)
         }
     }
 

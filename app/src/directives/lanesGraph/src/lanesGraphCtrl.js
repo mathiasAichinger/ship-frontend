@@ -142,114 +142,117 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
             // draw lanes
 
             var xLaneOffset = 200;
+            if (app.lane_templates != null) {
+                app.lane_templates.forEach(function(l) {
 
-            app.lane_templates.forEach(function(l) {
+                    // get all lane templates wich depends to app
+                    shipApiUiWrapper.getLaneTemplate(l.id , function (laneTemplate) {
 
-                // get all lane templates wich depends to app
-                shipApiUiWrapper.getLaneTemplate(l.id , function (laneTemplate) {
+                        // draw action template for lane
+                        actionPositions = [];
+                        var yActionOffset = 250;
+                        var posFirstAction = null;
+                        var i = 0;
+                        laneTemplate.action_templates.forEach(function(a) {
 
-                    // draw action template for lane
-                    actionPositions = [];
-                    var yActionOffset = 250;
-                    var posFirstAction = null;
-                    var i = 0;
-                    laneTemplate.action_templates.forEach(function(a) {
+                            // append action logo or default circle
+                            if (a.icon_url == null) {
+                                svg.append('circle')
+                                    .attr('class', 'lanes-graph-action')
+                                    .attr("cx", function() {
+                                        return (parseInt(xLaneOffset));
+                                    })
+                                    .attr("cy", yActionOffset)
+                                    .attr("r", 30);
 
-                        // append action logo or default circle
-                        if (a.icon_url == null) {
-                            svg.append('circle')
-                                .attr('class', 'lanes-graph-action')
-                                .attr("cx", function() {
-                                    return (parseInt(xLaneOffset));
-                                })
-                                .attr("cy", yActionOffset)
-                                .attr("r", 30);
+                            } else {
+                                svg.append('image')
+                                    .attr('class', 'lanes-graph-action')
+                                    .attr('x', function() {
+                                        return (parseInt(xLaneOffset) - 23);
+                                    })
+                                    .attr('y', yActionOffset - 60)
+                                    .attr('width', 140)
+                                    .attr('height', 140)
+                                    .attr("xlink:href", a.icon_url);
+                            }
 
-                        } else {
-                            svg.append('image')
-                                .attr('class', 'lanes-graph-action')
-                                .attr('x', function() {
-                                    return (parseInt(xLaneOffset) - 23);
-                                })
-                                .attr('y', yActionOffset - 60)
-                                .attr('width', 140)
-                                .attr('height', 140)
-                                .attr("xlink:href", a.icon_url);
+
+                            if (i == 0) {
+                                posFirstAction = [parseInt(xLaneOffset), yActionOffset];
+                            }
+
+                            actionPositions.push ([parseInt(xLaneOffset), yActionOffset]);
+
+                            yActionOffset += 150;
+                            i ++;
+                        });
+
+
+                        // draw lane
+                        var line = d3.svg.line();
+
+                        var totalLength = 300;
+
+                        var path = svg.append('path')
+                            .datum(actionPositions)
+                            .attr('d', line)
+                            .attr('class', 'lanes-graph-connection');
+
+
+                        if ($scope.viewMode == MODE_CONFIG) {
+                            path
+                                .attr("stroke-dasharray", totalLength + " " + totalLength)
+                                .attr("stroke-dashoffset", totalLength)
+                                .transition()
+                                .duration(2000)
+                                .ease("linear")
+                                .attr("stroke-dashoffset", 0);
                         }
 
 
-                        if (i == 0) {
-                            posFirstAction = [parseInt(xLaneOffset), yActionOffset];
+                        // connect app circle with first action
+                        if (posFirstAction != null) {
+
+                            var sourceX = parseInt(appCircle.attr('cx'));
+                            var sourceY = parseInt(appCircle.attr('cy')) + parseInt(appCircle.attr('r'));
+
+                            var targetX = posFirstAction[0];
+                            var targetY = posFirstAction[1];
+
+                            var middleX = ((targetX  - sourceX) / 2) + sourceX;
+                            var middleY = ((targetY - sourceY) / 2) + sourceY;
+
+                            var leftCurveX = ((middleX - targetX) * 0.25) + targetX;
+                            var leftCurveY = middleY;
+
+                            var rightCurveX = ((sourceX - middleX) * 0.75) + middleX;
+                            var rightCurveY = middleY;
+
+
+                            var rightCurve = svg.append('path')
+                                .attr('d', 'M' + sourceX + ',' + sourceY + ' Q' + rightCurveX + ',' + rightCurveY + ' '+ middleX + ',' + middleY )
+                                .attr('class', 'lanes-graph-connection');
+
+
+                            var leftCurve = svg.append('path')
+                                .attr('d', 'M' + targetX + ',' + targetY + ' Q' + leftCurveX + ',' + leftCurveY + ' '+ middleX + ',' + middleY )
+                                .attr('class', 'lanes-graph-connection');
+
+
                         }
 
-                        actionPositions.push ([parseInt(xLaneOffset), yActionOffset]);
 
-                        yActionOffset += 150;
-                        i ++;
+                        xLaneOffset += 300;
+
+                        // bring all actions to front
+                        d3.selectAll('.lanes-graph-action').moveToFront();
+
                     });
-
-
-                    // draw lane
-                    var line = d3.svg.line();
-
-                    var totalLength = 300;
-
-                    var path = svg.append('path')
-                        .datum(actionPositions)
-                        .attr('d', line)
-                        .attr('class', 'lanes-graph-connection');
-
-
-                    if ($scope.viewMode == MODE_CONFIG) {
-                        path
-                            .attr("stroke-dasharray", totalLength + " " + totalLength)
-                            .attr("stroke-dashoffset", totalLength)
-                            .transition()
-                            .duration(2000)
-                            .ease("linear")
-                            .attr("stroke-dashoffset", 0);
-                    }
-
-
-                    // connect app circle with first action
-                    if (posFirstAction != null) {
-
-                        var sourceX = parseInt(appCircle.attr('cx'));
-                        var sourceY = parseInt(appCircle.attr('cy')) + parseInt(appCircle.attr('r'));
-
-                        var targetX = posFirstAction[0];
-                        var targetY = posFirstAction[1];
-
-                        var middleX = ((targetX  - sourceX) / 2) + sourceX;
-                        var middleY = ((targetY - sourceY) / 2) + sourceY;
-
-                        var leftCurveX = ((middleX - targetX) * 0.25) + targetX;
-                        var leftCurveY = middleY;
-
-                        var rightCurveX = ((sourceX - middleX) * 0.75) + middleX;
-                        var rightCurveY = middleY;
-
-
-                        var rightCurve = svg.append('path')
-                            .attr('d', 'M' + sourceX + ',' + sourceY + ' Q' + rightCurveX + ',' + rightCurveY + ' '+ middleX + ',' + middleY )
-                            .attr('class', 'lanes-graph-connection');
-
-
-                        var leftCurve = svg.append('path')
-                            .attr('d', 'M' + targetX + ',' + targetY + ' Q' + leftCurveX + ',' + leftCurveY + ' '+ middleX + ',' + middleY )
-                            .attr('class', 'lanes-graph-connection');
-
-
-                    }
-
-
-                    xLaneOffset += 300;
-
-                    // bring all actions to front
-                    d3.selectAll('.lanes-graph-action').moveToFront();
-
                 });
-            });
+            }
+
+
         });
     }
 
