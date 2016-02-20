@@ -4,8 +4,22 @@ ship.factory('shipApi', shipApi);
 
 function shipApi () {
 
-    function _addJob () {
-        
+    function _addJob (job) {
+        if (job) {
+            // add job
+        }
+    }
+
+    function _removeJob (job) {
+        if (job) {
+            // remove job
+        }
+    }
+
+    function _updateJob (job) {
+        if (job) {
+            // update job
+        }
     }
 
     function _getJobs () {
@@ -17,7 +31,8 @@ function shipApi () {
 
     return {
         addJob: _addJob,
-        getJobs: _getJobs,
-
+        removeJob: _removeJob,
+        updateJob: _updateJob,
+        getJobs: _getJobs
     }
 }
