@@ -142,7 +142,7 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
 
             // append lanes
             shipApiUiWrapper.getLaneTemplate(1 , function (laneTemplate) {
-                
+
 
             });
 

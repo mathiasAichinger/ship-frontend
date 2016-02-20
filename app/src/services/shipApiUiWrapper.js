@@ -33,7 +33,14 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
         shipApi.getApp(id, function (response) {
             if (response && response.data && response.data.data) {
                 var app = response.data.data;
-                cb(new App(app.id, app.attributes['key'], app.attributes['name'], app.attributes['description'], app.attributes['icon_url']));
+                cb(new App(
+                    app.id,
+                    app.attributes['key'],
+                    app.attributes['name'],
+                    app.attributes['description'],
+                    app.attributes['icon_url'],
+                    app.relationships.lane_templates.data
+                ));
             } else {
                 notify.warn('App with ID ' + id + ' could not be found.');
                 cb(null);
