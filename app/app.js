@@ -1,6 +1,7 @@
 var ship = angular.module('ship', [
     'ngRoute',
-     'd3'
+     'd3',
+     'directives'
  ]);
 
 ship.config(function ($routeProvider) {

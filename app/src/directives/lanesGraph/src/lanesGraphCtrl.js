@@ -1,6 +1,8 @@
-ship.controller('buildCtrl', buildCtrl);
+angular
+    .module('directives.lanesGraph')
+    .controller('lanesGraphCtrl', ['$scope', '$rootScope', 'd3', lanesGraphCtrl]);
 
-function buildCtrl ($scope, $location, $routeParams, d3) {
+function lanesGraphCtrl($scope, $rootScope, d3) {
 
     'use strict';
 
@@ -13,10 +15,8 @@ function buildCtrl ($scope, $location, $routeParams, d3) {
     ------------------------------------------------------------------------------------------------------------------*/
     init();
     function init() {
-        console.log("buildCtrl init id: ", $routeParams.buildId);
-        console.log(d3);
+        console.log("lanesGraphCtrl init");
     }
-
 
 
     /*------------------------------------------------------------------------------------------------------------------
@@ -26,5 +26,8 @@ function buildCtrl ($scope, $location, $routeParams, d3) {
     /*------------------------------------------------------------------------------------------------------------------
      Private Methods
     ------------------------------------------------------------------------------------------------------------------*/
+
+
+
 
 }
