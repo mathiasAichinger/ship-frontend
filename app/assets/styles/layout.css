@@ -16,3 +16,7 @@
 .detail-view button {
     margin-bottom: 16px;
 }
+
+.selectable td:hover {
+    cursor: pointer;
+}

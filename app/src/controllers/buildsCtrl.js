@@ -18,6 +18,18 @@ function buildsCtrl ($scope, $stateParams, $state, shipApi) {
         { id: 2, name: 'Release', status: 'unsuccessful', progress: 100, startDate: new Date(), endDate: new Date()  }
     ];
 
+    $scope.isSelected = function (build) {
+        return $scope.selectedBuild == build;
+    };
+
+    $scope.select = function (build) {
+        if ($scope.selectedBuild && $scope.selectedBuild == build) {
+            $scope.selectedBuild = null;
+        } else {
+            $scope.selectedBuild = build;
+        }
+    };
+
     $scope.getStatusDisplayText = function (status) {
         switch (status) {
             case "in_progress": {

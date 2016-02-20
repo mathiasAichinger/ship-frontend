@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table selectable">
     <thead>
         <tr>
             <th>ID</th>
@@ -10,13 +10,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="build in builds" ng-class="{ 'success': build.status == 'successful', 'danger': build.status == 'unsuccessful', 'info': build.status == 'in_progress' }">
+        <tr ng-click="select(build)" ng-repeat="build in builds" ng-class="{ 'active': isSelected(build), 'success': build.status == 'successful', 'danger': build.status == 'unsuccessful' }">
             <td ng-bind="build.id"></td>
             <td ng-bind="build.name"></td>
-            <!-- <td ng-bind="getStatusDisplayText(build.status)"></td> -->
-            <td class="text-info" ng-show="build.status == 'in_progress'"><i class="fa fa-refresh fa-spin"></i></td>
-            <td class="text-success" ng-show="build.status == 'successful'"><i class="fa fa-check"></i></td>
-            <td class="text-danger" ng-show="build.status == 'unsuccessful'"><i class="fa fa-times"></i></td>
+            <!-- <td ng-bind=""></td> -->
+            <td ng-show="build.status == 'in_progress'"><i class="fa fa-refresh fa-spin"></i> {{getStatusDisplayText(build.status)}}</td>
+            <td class="text-success" ng-show="build.status == 'successful'"><i class="fa fa-check"></i> {{getStatusDisplayText(build.status)}}</td>
+            <td class="text-danger" ng-show="build.status == 'unsuccessful'"><i class="fa fa-times"></i> {{getStatusDisplayText(build.status)}}</td>
             <td ng-bind="build.progress"></td>
             <td ng-bind="build.startDate"></td>
             <td ng-bind="build.endDate"></td>
