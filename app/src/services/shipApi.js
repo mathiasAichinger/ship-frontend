@@ -19,6 +19,19 @@ function shipApi ($http) {
         }
     }
 
+    function _updateApp (app, successCallback, errorCallback) {
+        if (app) {
+            var successCb = successCallback || angular.noop;
+            var errorCb = errorCallback || angular.noop;
+
+            $http.patch(_serverUrl + 'apps/' + app.data.id, app).then(function success(response) {
+                successCb(response);
+            }, function error (response) {
+                errorCb(response);
+            });
+        }
+    }
+
     function _removeApp (id, successCallback, errorCallback) {
         var successCb = successCallback || angular.noop;
         var errorCb = errorCallback || angular.noop;
@@ -28,12 +41,6 @@ function shipApi ($http) {
         }, function error (response) {
             errorCb(response);
         });
-    }
-
-    function _updateApp (app) {
-        if (app) {
-            // update app
-        }
     }
 
     function _getApp (id, successCallback, errorCallback) {

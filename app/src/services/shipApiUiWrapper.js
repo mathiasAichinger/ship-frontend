@@ -25,6 +25,18 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
         });
     }
 
+    function _updateApp(app, callback) {
+        var cb = callback || angular.noop;
+
+        shipApi.updateApp(restConverter.appToRest(app), function (response) {
+            notify.success('App "' + app.name + '" has been saved.');
+            cb(true);
+        }, function (response) {
+            notify.error('App "' + app.name + '" could not be saved.', response.status);
+            cb(false);
+        });
+    }
+
     function _removeApp(app, callback) {
         if (app) {
             var cb = callback || angular.noop;
@@ -103,7 +115,6 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
                     });
                 }
 
-
                 var laneTemplate = new Lane_Template(
                     response.data.data.id,
                     response.data.data.attributes['name'],
@@ -125,6 +136,7 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
 
     return {
         addApp: _addApp,
+        updateApp: _updateApp,
         removeApp: _removeApp,
         getApp: _getApp,
         getApps: _getApps,
