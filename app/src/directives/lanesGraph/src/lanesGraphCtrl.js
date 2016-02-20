@@ -73,42 +73,7 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
 
     function draw() {
 
-
-        var lanes = [
-            {
-                'id': 0,
-                'name': 'lane1'
-            },
-            {
-                'id': 1,
-                'name': 'lane2'
-            },
-            {
-                'id': 2,
-                'name': 'lane3'
-            }
-        ];
-
-
-        var actions = [
-            {
-                'id': 0,
-                'name': 'scan'
-            },
-            {
-                'id': 1,
-                'name': 'pilot'
-            },
-            {
-                'id': 2,
-                'name': 'slack'
-            }
-        ];
-
-
         var actionPositions = [];
-
-
 
         // draw app
         var appCircle = svg.append('circle')
@@ -137,10 +102,7 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
             // bring all actions to front
             appCircle.moveToFront();
 
-
-
             // draw lanes
-
             var xLaneOffset = 200;
             if (app.lane_templates != null) {
                 app.lane_templates.forEach(function(l) {
@@ -169,13 +131,46 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrappe
                                 svg.append('image')
                                     .attr('class', 'lanes-graph-action')
                                     .attr('x', function() {
-                                        return (parseInt(xLaneOffset) - 23);
+                                        return (parseInt(xLaneOffset) - 22);
                                     })
-                                    .attr('y', yActionOffset - 60)
-                                    .attr('width', 140)
-                                    .attr('height', 140)
+                                    .attr('y', yActionOffset - 55)
+                                    .attr('width', 100)
+                                    .attr('height', 100)
                                     .attr("xlink:href", a.icon_url);
                             }
+
+                            // draw running spinner
+                            //TODO: only show if action is in progress!
+
+                            var radius = Math.min(150, 150) / 2;
+                            var tau = 2 * Math.PI;
+
+                            var arc = d3.svg.arc()
+                                .innerRadius(radius*0.5)
+                                .outerRadius(radius*0.5)
+                                .startAngle(0);
+
+                            var spinner = svg.append('g')
+                                .attr('transform', 'translate(' + (parseInt(xLaneOffset) - 2)+ ',' + (yActionOffset - 5 )+ ')' )
+                                .append('path')
+                                .datum({ endAngle: 0.33*tau })
+                                .attr('class', 'lanes-graph-spinner')
+                                .attr('d', arc)
+                                .call(spin, 1500);
+
+                            function spin(selection, duration) {
+                                selection.transition()
+                                    .ease('linear')
+                                    .duration(duration)
+                                    .attrTween('transform', function() {
+                                        return d3.interpolateString('rotate(0)', 'rotate(360)');
+                                    });
+
+                                setTimeout(function() { spin(selection, duration); }, duration);
+
+                            }
+
+
 
 
                             if (i == 0) {

@@ -13,3 +13,8 @@
     stroke-width: 7;
     fill: none;
 }
+
+.lanes-graph-spinner {
+    stroke: #5cb85c;
+    stroke-width: 1;
+}
