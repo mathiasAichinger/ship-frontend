@@ -87,19 +87,22 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
                 var laneTemplates = [];
 
                 var actionTemplates = [];
-                response.data.included.forEach(function(a) {
-                    actionTemplates.push(
-                        new Action_Template(
-                            a.id,
-                            a.type,
-                            a.attributes['name'],
-                            a.attributes['description'],
-                            a.attributes['icon_url'],
-                            a.relationships.parent.data,
-                            a.relationships.child.data
-                        )
-                    );
-                });
+                if (response.data.included != null) {
+                    response.data.included.forEach(function(a) {
+                        actionTemplates.push(
+                            new Action_Template(
+                                a.id,
+                                a.type,
+                                a.attributes['name'],
+                                a.attributes['description'],
+                                a.attributes['icon_url'],
+                                a.relationships.parent.data,
+                                a.relationships.child.data
+                            )
+                        );
+                    });
+                }
+
 
                 var laneTemplate = new Lane_Template(
                     response.data.data.id,
