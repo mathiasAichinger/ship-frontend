@@ -54,8 +54,9 @@ ship.config(function ($routeProvider, $stateProvider) {
                     controller: 'appDetailCtrl'
                 },
                 'detailView': {
-                    template: 'GENERAL'
-                }
+                    templateUrl: 'views/appGeneral.html',
+                    controller: 'appGeneralCtrl'
+                },
             }
         })
         .state('app.lanes', {
