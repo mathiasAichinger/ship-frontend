@@ -2,10 +2,11 @@
     <img ng-src="{{app.iconUrl}}" class="img-responsive app-image" alt="Generic placeholder thumbnail"> <h1 class="page-header" ng-bind="app.name"></h1>
 
     <ul class="nav nav-tabs">
-        <li role="presentation" ng-class="{ active: endsWith('general') }"><a ui-sref="app.general({ appId: app.id })">General Information</a></li>
-        <li role="presentation" ng-class="{ active: endsWith('lanes') }"><a ui-sref="app.lanes({ appId: app.id })">Lane Templates</a></li>
-        <li role="presentation" ng-class="{ active: endsWith('builds') }"><a ui-sref="app.builds({ appId: app.id })">Builds</a></li>
-        <li role="presentation" ng-class="{ active: endsWith('logs') }"><a ui-sref="app.logs({ appId: app.id })">Logs</a></li>
+        <li role="presentation" ng-class="{ active: endsWith('general') }"><a ui-sref="app.general({ appId: appId })">General Information</a></li>
+        <li role="presentation" ng-class="{ active: endsWith('lanes') }"><a ui-sref="app.lanes({ appId: appId })">Lane Templates</a></li>
+        <li role="presentation" ng-class="{ active: endsWith('builds') }"><a ui-sref="app.builds({ appId: appId })">Builds</a></li>
+        <li role="presentation" ng-class="{ active: endsWith('logs') }"><a ui-sref="app.logs({ appId: appId })">Logs</a></li>
+        <li role="presentation"><a href="" class="text-danger" data-toggle="modal" data-target="#removeAppModal">Remove App</a></li>
     </ul>
 
     <div class="tab-content">
@@ -16,4 +17,22 @@
 <div ng-hide="app">
     <i class="fa fa-circle-o-notch fa-spin fa-2x loading-icon"></i>
     <h1 class="page-header">Loading...</h1>
+</div>
+
+<div class="modal fade" id="removeAppModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Question</h4>
+      </div>
+      <div class="modal-body">
+        Do you really want to remove the app?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" ng-click="removeApp()">Remove</button>
+      </div>
+    </div>
+  </div>
 </div>

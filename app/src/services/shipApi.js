@@ -19,10 +19,15 @@ function shipApi ($http) {
         }
     }
 
-    function _removeApp (app) {
-        if (app) {
-            // remove app
-        }
+    function _removeApp (id, successCallback, errorCallback) {
+        var successCb = successCallback || angular.noop;
+        var errorCb = errorCallback || angular.noop;
+
+        $http.delete(_serverUrl + 'apps/' + id).then(function success(response) {
+            successCb(response);
+        }, function error (response) {
+            errorCb(response);
+        });
     }
 
     function _updateApp (app) {

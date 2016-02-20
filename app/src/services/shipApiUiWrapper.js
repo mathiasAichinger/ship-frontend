@@ -8,10 +8,8 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
         var cb = callback || angular.noop;
 
         shipApi.addApp(restConverter.appToRest(app), function (response) {
-            if (response && response.data && response.data.data) {
-                notify.success('App "' + app.name + '" has been added.');
-                cb(true);
-            }
+            notify.success('App "' + app.name + '" has been added.');
+            cb(true);
         }, function (response) {
             switch (response.status) {
                 case 422: {
@@ -27,20 +25,27 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
         });
     }
 
+    function _removeApp(app, callback) {
+        if (app) {
+            var cb = callback || angular.noop;
+
+            shipApi.removeApp(app.id, function (response) {
+                notify.success('App "' + app.name + '" has been removed.');
+                cb(true);
+            }, function (response) {
+                notify.error('App "' + app.name + '" could not be removed.', response.status);
+                cb(false);
+            });
+        }
+    }
+
     function _getApp(id, callback) {
         var cb = callback || angular.noop;
 
         shipApi.getApp(id, function (response) {
             if (response && response.data && response.data.data) {
                 var app = response.data.data;
-                cb(new App(
-                    app.id,
-                    app.attributes['key'],
-                    app.attributes['name'],
-                    app.attributes['description'],
-                    app.attributes['icon_url'],
-                    app.relationships.lane_templates.data
-                ));
+                cb(restConverter.appFromRest(app));
             } else {
                 notify.warn('App with ID ' + id + ' could not be found.');
                 cb(null);
@@ -59,7 +64,7 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
                 var apps = [];
                 // add apps
                 response.data.data.forEach(function (app) {
-                    apps.push(new App(app.id, app.attributes['key'], app.attributes['name'], app.attributes['description'], app.attributes['icon_url']));
+                    apps.push(restConverter.appFromRest(app));
                 });
 
                 cb(apps);
@@ -117,6 +122,7 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
 
     return {
         addApp: _addApp,
+        removeApp: _removeApp,
         getApp: _getApp,
         getApps: _getApps,
         getLaneTemplate: _getLaneTemplate

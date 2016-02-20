@@ -1,11 +1,6 @@
 ship.controller('buildsCtrl', buildsCtrl);
 
 function buildsCtrl ($scope, $stateParams, $state, shipApi) {
-    shipApi.getApp($stateParams.appId, function (app) {
-        if (app) {
-            $scope.app = app;
-        }
-    });
 
     setInterval(function () {
         $scope.builds[0].progress++;
