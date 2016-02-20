@@ -1,7 +1,5 @@
 ship.controller('jobsCtrl', jobsCtrl);
 
 function jobsCtrl ($scope, $location, $routeParams, shipApi) {
-    $scope.foo = function () {
-        console.log(shipApi.getJobs());
-    };
+    $scope.jobs = shipApi.getJobs();
 }

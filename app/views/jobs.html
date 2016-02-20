@@ -1,1 +1,24 @@
-<h1 ng-click="foo()">hi!</h1>
+<h1 class="page-header">Apps</h1>
+
+<div class="row placeholders">
+    <div ng-repeat="job in jobs" class="col-xs-6 col-sm-3 placeholder">
+        <img src="{{job.image}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4 ng-bind="job.name"></h4>
+        <span class="text-muted">Sweet description</span>
+    </div>
+    <!-- <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div> -->
+</div>

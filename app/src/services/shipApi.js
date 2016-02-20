@@ -24,8 +24,8 @@ function shipApi () {
 
     function _getJobs () {
         return [
-            { id: 0, name: 'Runtastic' },
-            { id: 1, name: 'NETx Touch' }
+            { id: 0, name: 'Runtastic', image: 'https://upload.wikimedia.org/wikipedia/en/6/6b/Runtastic_Logo.png' },
+            { id: 1, name: 'NETx Touch', image: 'https://lh4.ggpht.com/jFT8tFre_FEZPcgWZkkuSA6RW7Dva-BKMAaQMh_zIr8LQu2Dm9UcmLXP86Opv5FqFs-Q=w300-rw' }
         ];
     }
 
