@@ -1,4 +1,4 @@
-<div ng-show="apps && apps.length > 0">
+<div ng-hide="appsLoading">
     <h1 class="page-header">Apps</h1>
     <a ui-sref="apps.add" type="button" class="btn btn-default"><i class="fa fa-plus"></i></a>
 
@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div ng-hide="apps || apps.length > 0">
+<div ng-show="appsLoading">
     <i class="fa fa-circle-o-notch fa-spin fa-2x loading-icon"></i>
     <h1 class="page-header">Loading...</h1>
 </div>

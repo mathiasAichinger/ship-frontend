@@ -88,10 +88,13 @@ body {
 .placeholder {
     margin-bottom: 20px;
     padding: 12px;
+    border-radius: 10px;
 }
 .placeholder:hover {
-    background-color: #fafafa;
+    background-color: #e3e3e3;
     cursor:pointer;
+    text-decoration: none;
+    font-style: normal;
 }
 .placeholder img {
     display: inline-block;
