@@ -1,9 +1,11 @@
 <h1 class="page-header">Apps</h1>
 
+<h2 ui-view="viewA"></h2>
+
 <div class="row placeholders">
-    <div ng-repeat="job in jobs" class="col-xs-6 col-sm-3 placeholder">
-        <img src="{{job.image}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4 ng-bind="job.name"></h4>
+    <div ng-repeat="app in apps" class="col-xs-6 col-sm-3 placeholder">
+        <img ng-src="{{app.image}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4 ng-bind="app.name"></h4>
         <span class="text-muted">Sweet description</span>
     </div>
     <!-- <div class="col-xs-6 col-sm-3 placeholder">
