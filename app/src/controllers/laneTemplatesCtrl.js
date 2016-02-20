@@ -7,10 +7,10 @@ function laneTemplatesCtrl ($scope, $location, $stateParams, $state) {
      Variables
     ------------------------------------------------------------------------------------------------------------------*/
     $scope.graphConfig = {
-        'appId': 200,
+        'appId': $stateParams.appId,
         'viewMode': 'config',
-        'width': 1300,
+        'width': 1000,
         'height': 1000
     };
-
+    
 }

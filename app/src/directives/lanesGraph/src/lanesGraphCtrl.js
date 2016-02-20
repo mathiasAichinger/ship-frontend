@@ -1,8 +1,8 @@
 angular
     .module('directives.lanesGraph')
-    .controller('lanesGraphCtrl', ['$scope', '$rootScope', '$element', 'd3', lanesGraphCtrl]);
+    .controller('lanesGraphCtrl', ['$scope', '$rootScope', '$element', 'd3', 'shipApiUiWrapper', lanesGraphCtrl]);
 
-function lanesGraphCtrl($scope, $rootScope, $element ,d3Service) {
+function lanesGraphCtrl($scope, $rootScope, $element ,d3Service, shipApiUiWrapper) {
 
     'use strict';
 
@@ -84,10 +84,6 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service) {
             {
                 'id': 2,
                 'name': 'lane3'
-            },
-            {
-                'id': 2,
-                'name': 'lane3'
             }
         ];
 
@@ -122,14 +118,25 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service) {
             .attr("r", 50)
 
         // append app logo
-        svg.append('image')
-            .attr('x', function() {
-                return (parseInt(svg.attr('width')) / 2) - 25;
-            })
-            .attr('y', 30)
-            .attr('width', 50)
-            .attr('height', 50)
-            .attr("xlink:href", "http://upload.wikimedia.org/wikipedia/en/6/6b/Runtastic_Logo.png");
+        shipApiUiWrapper.getApp($scope.appId, function (app) {
+
+            if (app != null) {
+                svg.append('image')
+                    .attr('x', function() {
+                        return (parseInt(svg.attr('width')) / 2) - 35;
+                    })
+                    .attr('y', 20)
+                    .attr('width', 70)
+                    .attr('height', 70)
+                    .attr("xlink:href", app.iconUrl);
+            }
+
+            // bring all actions to front
+            appCircle.moveToFront();
+
+        });
+
+
 
 
 
@@ -168,21 +175,6 @@ function lanesGraphCtrl($scope, $rootScope, $element ,d3Service) {
 
 
             // draw lane
-
-            var prev = null;
-            actionPositions.forEach(function(a) {
-                console.log("lane: ", l , " a: ", a);
-
-                // if (prev != null) {
-                //     svg.append('path')
-                //         .attr('d', line)
-                //         .attr('class', 'lanes-graph-connection');
-                // }
-
-                prev = a;
-            });
-
-
             var line = d3.svg.line();
 
             var totalLength = 300;
