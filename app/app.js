@@ -55,7 +55,8 @@ ship.config(function ($stateProvider) {
             url: '/lanes',
             views: {
                 'detailView': {
-                    template: 'LANES'
+                    templateUrl: 'views/laneTemplates.html',
+                    controller: 'laneTemplatesCtrl'
                 }
             }
         })

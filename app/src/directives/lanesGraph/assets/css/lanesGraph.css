@@ -1,0 +1,15 @@
+.lanes-graph-app {
+    fill: transparent;
+    stroke: lightgray;
+    stroke-width: 7;
+}
+
+.lanes-graph-action {
+    fill: lightblue;
+}
+
+.lanes-graph-connection {
+    stroke: lightgray;
+    stroke-width: 7;
+    fill: none;
+}
