@@ -1,10 +1,10 @@
 ship.controller('appDetailCtrl', appDetailCtrl);
 
-function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrapper) {
+function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrapper, pathParser) {
     $scope.appId = $stateParams.appId;
     $scope.appLoaded = false;
     $scope.isRemoving = false;
-
+    
     shipApiUiWrapper.getApp($scope.appId, function (app) {
         if (app) {
             $scope.app = app;

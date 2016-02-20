@@ -1,6 +1,6 @@
 <div ng-hide="appsLoading">
+    <a style="float: right;" ui-sref="apps.add" type="button" class="btn btn-default"><i class="fa fa-plus"></i></a>
     <h1 class="page-header">Apps</h1>
-    <a ui-sref="apps.add" type="button" class="btn btn-default"><i class="fa fa-plus"></i></a>
 
     <div class="placeholders">
         <a ng-repeat="app in apps" ui-sref="app.general({ appId: app.id })">
