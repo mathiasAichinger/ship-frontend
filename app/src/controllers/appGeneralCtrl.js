@@ -9,7 +9,7 @@ function appGeneralCtrl ($scope, $state, $stateParams, notify, shipApi) {
 
     $scope.saveApp = function () {
         notify.notifySuccess('App has been saved.', 'Yay');
-        notify.notifyWarn('App has been saved.', 'Yay');
-        notify.notifyError('App has been saved.', 'Yay');
+        // notify.notifyWarn('App has been saved.', 'Yay');
+        // notify.notifyError('App has been saved.', 'Yay');
     };
 }

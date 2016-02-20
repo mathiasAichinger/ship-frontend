@@ -1,10 +1,10 @@
 <img ng-src="{{app.image}}" class="img-responsive app-image" alt="Generic placeholder thumbnail"> <h1 class="page-header" ng-bind="app.name"></h1>
 
 <ul class="nav nav-tabs">
-  <li role="presentation" ng-class="{ active: isTabActive('general') }"><a ui-sref="app.general({ appId: app.id })">General Information</a></li>
-  <li role="presentation" ng-class="{ active: isTabActive('lanes') }"><a ui-sref="app.lanes({ appId: app.id })">Lane Templates</a></li>
-  <li role="presentation" ng-class="{ active: isTabActive('builds') }"><a ui-sref="app.builds({ appId: app.id })">Builds</a></li>
-  <li role="presentation" ng-class="{ active: isTabActive('logs') }"><a ui-sref="app.logs({ appId: app.id })">Logs</a></li>
+  <li role="presentation" ng-class="{ active: endsWith('general') }"><a ui-sref="app.general({ appId: app.id })">General Information</a></li>
+  <li role="presentation" ng-class="{ active: endsWith('lanes') }"><a ui-sref="app.lanes({ appId: app.id })">Lane Templates</a></li>
+  <li role="presentation" ng-class="{ active: endsWith('builds') }"><a ui-sref="app.builds({ appId: app.id })">Builds</a></li>
+  <li role="presentation" ng-class="{ active: endsWith('logs') }"><a ui-sref="app.logs({ appId: app.id })">Logs</a></li>
 </ul>
 
 <div class="tab-content">

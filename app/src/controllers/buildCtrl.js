@@ -17,7 +17,7 @@ function buildCtrl ($scope, $location, $routeParams, d3) {
         console.log(d3);
     }
 
-
+    
 
     /*------------------------------------------------------------------------------------------------------------------
      Scope Methods

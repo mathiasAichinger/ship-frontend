@@ -7,10 +7,4 @@ function appDetailCtrl ($scope, $location, $stateParams, $state, shipApi) {
             $scope.app = app;
         }
     });
-
-    $scope.isTabActive = function (tab) {
-        if (tab) {
-            return $location.path().endsWith(tab);
-        }
-    }
 }

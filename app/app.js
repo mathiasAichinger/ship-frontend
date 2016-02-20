@@ -79,8 +79,9 @@ ship.config(function ($routeProvider, $stateProvider) {
                     controller: 'appDetailCtrl'
                 },
                 'detailView': {
-                    template: 'BUILDS'
-                }
+                    templateUrl: 'views/builds.html',
+                    controller: 'buildsCtrl'
+                },
             }
         })
         .state('app.logs', {

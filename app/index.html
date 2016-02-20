@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../assets/styles/layout.css"/>
     <link rel="stylesheet" href="../assets/styles/dashboard.css"/>
     <link rel="stylesheet" href="../share/pnotify.custom.min.css"/>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body ng-app="ship" ng-controller="navCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -24,7 +27,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a ui-sref="apps">Dashboard</a></li>
+            <li><a>Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
@@ -40,7 +43,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#/apps">Apps <span class="sr-only">(current)</span></a></li>
+            <li ng-class="{ active: contains('apps') }"><a href="#/apps">Apps <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
@@ -69,6 +72,7 @@
 <!-- services -->
 <script src="src/services/shipApi.js"></script>
 <script src="src/services/notify.js"></script>
+<script src="src/services/pathParser.js"></script>
 <script src="src/services/d3.js"></script>
 
 <!-- directives -->
@@ -83,6 +87,7 @@
 <script src="src/controllers/appsCtrl.js"></script>
 <script src="src/controllers/appGeneralCtrl.js"></script>
 <script src="src/controllers/appDetailCtrl.js"></script>
+<script src="src/controllers/buildsCtrl.js"></script>
 <script src="src/controllers/buildCtrl.js"></script>
 
 </html>

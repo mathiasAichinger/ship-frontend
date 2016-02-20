@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Progress</th>
+            <th>StartDate</th>
+            <th>EndDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="build in builds" ng-class="{ 'success': build.status == 'successful', 'danger': build.status == 'unsuccessful', 'info': build.status == 'in_progress' }">
+            <td ng-bind="build.id"></td>
+            <td ng-bind="build.name"></td>
+            <!-- <td ng-bind="getStatusDisplayText(build.status)"></td> -->
+            <td class="text-info" ng-show="build.status == 'in_progress'"><i class="fa fa-refresh fa-spin"></i></td>
+            <td class="text-success" ng-show="build.status == 'successful'"><i class="fa fa-check"></i></td>
+            <td class="text-danger" ng-show="build.status == 'unsuccessful'"><i class="fa fa-times"></i></td>
+            <td ng-bind="build.progress"></td>
+            <td ng-bind="build.startDate"></td>
+            <td ng-bind="build.endDate"></td>
+        </tr>
+    </tbody>
+</table>
