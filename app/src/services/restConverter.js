@@ -43,7 +43,7 @@ function restConverter () {
                     builds.push(_buildFromRest(value.id, value.attributes))
                 }
             });
-            appObject.builds = builds;
+            appObject.builds = builds.reverse();
             return appObject;
         }
     }
