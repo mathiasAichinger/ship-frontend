@@ -1,6 +1,6 @@
 ship.controller('buildsCtrl', buildsCtrl);
 
-function buildsCtrl ($scope, $stateParams, $state, shipApi) {
+function buildsCtrl($scope, $stateParams, $state, shipApi) {
 
     // setInterval(function () {
     //     $scope.builds[0].progress++;
@@ -21,16 +21,25 @@ function buildsCtrl ($scope, $stateParams, $state, shipApi) {
 
     $scope.getStatusDisplayText = function (status) {
         switch (status) {
-            case "in_progress": {
+            case "in_progress":
+            {
                 return "In Progress";
             }
-            case "successful": {
+            case "successful":
+            {
                 return "Successful";
             }
-            case "unsuccessful": {
+            case "unsuccessful":
+            {
                 return "Unsuccessful";
             }
-            default: {
+            case "pending":
+            {
+                return "Pending"
+            }
+
+            default:
+            {
                 return "Unknown";
             }
         }

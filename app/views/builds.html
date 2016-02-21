@@ -14,12 +14,13 @@
             <td ng-bind="build.id"></td>
             <td ng-bind="build.name"></td>
             <!-- <td ng-bind=""></td> -->
+            <td class="text-warning" ng-show="build.status == 'pending'">{{getStatusDisplayText(build.status)}}</td>
             <td ng-show="build.status == 'in_progress'"><i class="fa fa-refresh fa-spin"></i> {{getStatusDisplayText(build.status)}}</td>
             <td class="text-success" ng-show="build.status == 'successful'"><i class="fa fa-check"></i> {{getStatusDisplayText(build.status)}}</td>
             <td class="text-danger" ng-show="build.status == 'unsuccessful'"><i class="fa fa-times"></i> {{getStatusDisplayText(build.status)}}</td>
-            <td ng-bind="build.progress"></td>
-            <td ng-bind="build.startDate"></td>
-            <td ng-bind="build.endDate"></td>
+            <td ng-bind="build.progress + '%'"></td>
+            <td ng-bind="build.startDate | date:'dd.MM.yyyy - HH:mm'"></td>
+            <td ng-bind="build.endDate | date:'dd.MM.yyyy - HH:mm'"></td>
         </tr>
     </tbody>
 </table>
