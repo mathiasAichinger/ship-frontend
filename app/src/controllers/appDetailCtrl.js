@@ -4,7 +4,7 @@ function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrappe
     $scope.appId = $stateParams.appId;
     $scope.appLoaded = false;
     $scope.isRemoving = false;
-    
+
     shipApiUiWrapper.getApp($scope.appId, function (app) {
         if (app) {
             $scope.app = app;
@@ -13,6 +13,12 @@ function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrappe
             $scope.app = {};
         }
     });
+
+    $scope.saveApp = function () {
+        shipApiUiWrapper.updateApp($scope.app, function (success) {
+
+        });
+    };
 
     $scope.removeApp = function () {
         $scope.isRemoving = true;
