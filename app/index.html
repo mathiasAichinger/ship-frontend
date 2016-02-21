@@ -4,18 +4,22 @@
     <meta charset="utf-8">
     <title>Ship</title>
 
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../assets/styles/layout.css"/>
-    <link rel="stylesheet" href="../assets/styles/dashboard.css"/>
-    <link rel="stylesheet" href="../share/pnotify.custom.min.css"/>
-
     <!-- font awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
+    <!-- build:css css/vendors.css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../share/pnotify.custom.min.css"/>
+
     <!-- directives -->
     <link rel="stylesheet" href="src/directives/lanesGraph/assets/css/lanesGraph.css"/>
+    <!-- /build -->
 
+    <!-- build:css css/ship.css -->
+    <link rel="stylesheet" href="../assets/styles/layout.css"/>
+    <link rel="stylesheet" href="../assets/styles/dashboard.css"/>
+    <!-- /build -->
 </head>
 <body ng-app="ship" ng-controller="navCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -60,16 +64,20 @@
     </div>
 </body>
 
+<!-- build:js js/vendors.js -->
 <!-- bower components -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/d3/d3.min.js"></script>
 
 <!-- third party -->
 <script src="../share/pnotify.custom.min.js"></script>
+<!-- /build -->
 
+<!-- build:js js/ship.js -->
 <!-- app -->
 <script src="app.js"></script>
 
@@ -103,5 +111,6 @@
 <script src="src/controllers/buildsCtrl.js"></script>
 <script src="src/controllers/buildCtrl.js"></script>
 <script src="src/controllers/laneTemplatesCtrl.js"></script>
+<!-- /build -->
 
 </html>

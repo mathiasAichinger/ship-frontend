@@ -1,6 +1,6 @@
 'use strict';
 
-ship.factory('notify', notify);
+angular.module('ship').factory('notify', notify);
 
 function notify () {
     PNotify.prototype.options.styling = "bootstrap3";
