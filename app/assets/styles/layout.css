@@ -30,3 +30,8 @@
 form {
     padding: 16px;
 }
+
+.header-button {
+    margin-left: 4px;
+    margin-top: 4px;
+}

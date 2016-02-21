@@ -1,5 +1,6 @@
 <div ng-show="app">
-    <a style="float: right;" ui-sref="apps.show" type="button" class="btn btn-default"><i class="fa fa-close"></i></a>
+    <a style="float: right;" ui-sref="apps.show" type="button" class="btn btn-default header-button"><i class="fa fa-close"></i></a>
+    <button style="float: right;" ng-disabled="!appLoaded" ng-click="saveApp()" type="button" class="btn btn-default header-button"><i class="fa fa-floppy-o"></i></button>
     <img ng-src="{{app.iconUrl}}" class="img-responsive app-image" alt="Generic placeholder thumbnail"> <h1 class="page-header" ng-bind="app.name"></h1>
 
     <ul class="nav nav-tabs">
@@ -7,7 +8,7 @@
         <li role="presentation" ng-class="{ active: endsWith('lanes') }"><a ui-sref="app.lanes({ appId: appId })">Lane Templates</a></li>
         <li role="presentation" ng-class="{ active: endsWith('builds') }"><a ui-sref="app.builds({ appId: appId })">Builds</a></li>
         <li role="presentation" ng-class="{ active: endsWith('logs') }"><a ui-sref="app.logs({ appId: appId })">Logs</a></li>
-        <li role="presentation"><a style="outline: none; " href="" class="text-danger" data-toggle="modal" data-target="#removeAppModal"><!--<i class="fa fa-trash"></i>--> Remove App</a></li>
+        <li ng-show="appLoaded" role="presentation"><a style="outline: none; " href="" class="text-danger" data-toggle="modal" data-target="#removeAppModal"><!--<i class="fa fa-trash"></i>--> Remove App</a></li>
     </ul>
 
     <div class="tab-content">
