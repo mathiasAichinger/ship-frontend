@@ -4,7 +4,7 @@ ship.factory('shipApi', shipApi);
 
 function shipApi ($http) {
 
-    var _serverUrl = 'http://192.168.1.82:3001/api/';
+    var _serverUrl = 'http://localhost:3000/api/';
 
     function _addApp (app, successCallback, errorCallback) {
         if (app) {
@@ -47,7 +47,7 @@ function shipApi ($http) {
         var successCb = successCallback || angular.noop;
         var errorCb = errorCallback || angular.noop;
 
-        $http.get(_serverUrl + 'apps/' + id).then(function success(response) {
+        $http.get(_serverUrl + 'apps/' + id + '?include=builds').then(function success(response) {
             successCb(response);
         }, function error (response) {
             errorCb(response);
@@ -58,7 +58,7 @@ function shipApi ($http) {
         var successCb = successCallback || angular.noop;
         var errorCb = errorCallback || angular.noop;
 
-        $http.get(_serverUrl + 'apps?include=builds').then(function success(response) {
+        $http.get(_serverUrl + 'apps').then(function success(response) {
             successCb(response);
         }, function error (response) {
             errorCb(response);

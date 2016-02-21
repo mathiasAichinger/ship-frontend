@@ -57,7 +57,8 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
         shipApi.getApp(id, function (response) {
             if (response && response.data && response.data.data) {
                 var app = response.data.data;
-                cb(restConverter.appFromRest(app));
+                var included = response.data.included
+                cb(restConverter.appFromRest(app, included));
             } else {
                 notify.warn('App with ID ' + id + ' could not be found.');
                 cb(null);
