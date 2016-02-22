@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       my: {
-          src: ['app.js', 'src/**/*.js'],
+          src: ['src/modules/*.js', 'src/components/**/*.js', 'src/models/**/*.js', 'src/services/**/*.js'],
           dest: 'dist/js/<%= pkg.name %>.js'
       },
       vendors_js: {
@@ -17,15 +17,9 @@ module.exports = function (grunt) {
     },
     copy: {
       views: {
-        cwd: 'views',
-        src: '**/*',
-        dest: 'dist/views',
-        expand: true
-      },
-      directive_views: {
-        cwd: 'src',
+        cwd: 'src/components',
         src: '**/*.html',
-        dest: 'dist/views',
+        dest: 'dist/src/components',
         expand: true
       },
       bootstrap_fonts: {
@@ -55,7 +49,7 @@ module.exports = function (grunt) {
     },
     cssmin: {
       dist: {
-        src: 'assets/styles/**/*.css',
+        src: ['assets/styles/**/*.css', 'src/components/**/*.css'],
         dest: 'dist/css/<%= pkg.name %>.css'
       }
     },
@@ -66,7 +60,7 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      files: ['src/**/*'],
+      files: ['**/*'],
       tasks: ['build']
     }
   });

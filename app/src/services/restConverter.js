@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ship').factory('restConverter', restConverter);
+ship.factory('restConverter', restConverter);
 
 function restConverter () {
     function _appToRest (app) {

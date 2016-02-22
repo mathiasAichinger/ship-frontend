@@ -1,15 +1,17 @@
-angular.module('ship', [
+var ship = angular.module('ship', [
     'ngRoute',
     'd3',
     'ui.router',
 	'directives'
-]).config(function ($stateProvider) {
+]);
+
+ship.config(function ($stateProvider) {
     $stateProvider
         .state('apps', {
             url: '/apps',
             views: {
                 'mainView': {
-                    templateUrl: 'views/apps.html'
+                    templateUrl: '../src/components/app/appsView.html'
                 }
             }
         })
@@ -17,7 +19,7 @@ angular.module('ship', [
             url: '/show',
             views: {
                 'detailView': {
-                    templateUrl: 'views/appList.html',
+                    templateUrl: '../src/components/app/list/appListView.html',
                     controller: 'appsCtrl'
                 }
             }
@@ -26,7 +28,7 @@ angular.module('ship', [
             url: '/add',
             views: {
                 'detailView': {
-                    templateUrl: 'views/appAdd.html',
+                    templateUrl: '../src/components/app/add/appAddView.html',
                     controller: 'appAddCtrl'
                 }
             }
@@ -35,7 +37,7 @@ angular.module('ship', [
             url: '/apps/:appId',
             views: {
                 'mainView': {
-                    templateUrl: 'views/appDetail.html',
+                    templateUrl: '../src/components/app/detail/appDetailView.html',
                     controller: 'appDetailCtrl'
                 }
             }
@@ -44,7 +46,7 @@ angular.module('ship', [
             url: '/general',
             views: {
                 'detailView': {
-                    templateUrl: 'views/appGeneral.html',
+                    templateUrl: '../src/components/app/general/appGeneralView.html',
                     controller: 'appGeneralCtrl'
                 }
             }
@@ -53,7 +55,7 @@ angular.module('ship', [
             url: '/lanes',
             views: {
                 'detailView': {
-                    templateUrl: 'views/laneTemplates.html',
+                    templateUrl: '../src/components/laneTemplates/laneTemplatesView.html',
                     controller: 'laneTemplatesCtrl'
                 }
             }
@@ -62,7 +64,7 @@ angular.module('ship', [
             url: '/builds',
             views: {
                 'detailView': {
-                    templateUrl: 'views/builds.html',
+                    templateUrl: '../src/components/builds/buildsView.html',
                     controller: 'buildsCtrl'
                 },
             }

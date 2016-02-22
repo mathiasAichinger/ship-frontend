@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ship').factory('pathParser', pathParser);
+ship.factory('pathParser', pathParser);
 
 function pathParser ($location) {
 

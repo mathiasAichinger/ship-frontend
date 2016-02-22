@@ -1,4 +1,4 @@
-angular.module('ship').controller('laneTemplatesCtrl', laneTemplatesCtrl);
+ship.controller('laneTemplatesCtrl', laneTemplatesCtrl);
 
 function laneTemplatesCtrl ($scope, $location, $stateParams, $state) {
     'use strict';
@@ -12,5 +12,5 @@ function laneTemplatesCtrl ($scope, $location, $stateParams, $state) {
         'width': 1000,
         'height': 1000
     };
-
+    
 }

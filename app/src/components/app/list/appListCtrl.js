@@ -1,4 +1,4 @@
-angular.module('ship').controller('appsCtrl', appsCtrl);
+ship.controller('appsCtrl', appsCtrl);
 
 function appsCtrl ($scope, $location, $state, shipApiUiWrapper) {
     $scope.appsLoading = true;

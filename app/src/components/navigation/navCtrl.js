@@ -1,4 +1,4 @@
-angular.module('ship').controller('navCtrl', navCtrl);
+ship.controller('navCtrl', navCtrl);
 
 function navCtrl ($scope, $state, pathParser) {
     $state.go('apps.show');

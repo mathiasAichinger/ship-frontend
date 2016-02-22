@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../share/pnotify.custom.min.css"/>
-
-    <!-- directives -->
-    <link rel="stylesheet" href="src/directives/lanesGraph/assets/css/lanesGraph.css"/>
     <!-- /build -->
 
     <!-- build:css css/ship.css -->
     <link rel="stylesheet" href="../assets/styles/layout.css"/>
     <link rel="stylesheet" href="../assets/styles/dashboard.css"/>
+
+    <!-- directives -->
+    <link rel="stylesheet" href="src/components/lanesGraph/assets/css/lanesGraph.css"/>
     <!-- /build -->
 </head>
 <body ng-app="ship" ng-controller="navCtrl">
@@ -79,7 +79,7 @@
 
 <!-- build:js js/ship.js -->
 <!-- app -->
-<script src="app.js"></script>
+<script src="src/modules/app.js"></script>
 
 <!-- models -->
 <script src="src/models/App.js"></script>
@@ -96,21 +96,21 @@
 <script src="src/services/d3.js"></script>
 
 <!-- directives -->
-<script src="src/directives/directives.js"></script>
+<script src="src/modules/directives.js"></script>
 
-<script src="src/directives/lanesGraph/lanesGraph.js"></script>
-<script src="src/directives/lanesGraph/src/lanesGraphCtrl.js"></script>
+<script src="src/components/lanesGraph/lanesGraph.js"></script>
+<script src="src/components/lanesGraph/src/lanesGraphCtrl.js"></script>
 
 <!-- controllers -->
-<script src="src/controllers/navCtrl.js"></script>
+<script src="src/components/navigation/navCtrl.js"></script>
 
-<script src="src/controllers/appListCtrl.js"></script>
-<script src="src/controllers/appAddCtrl.js"></script>
-<script src="src/controllers/appGeneralCtrl.js"></script>
-<script src="src/controllers/appDetailCtrl.js"></script>
-<script src="src/controllers/buildsCtrl.js"></script>
-<script src="src/controllers/buildCtrl.js"></script>
-<script src="src/controllers/laneTemplatesCtrl.js"></script>
+<script src="src/components/app/list/appListCtrl.js"></script>
+<script src="src/components/app/add/appAddCtrl.js"></script>
+<script src="src/components/app/general/appGeneralCtrl.js"></script>
+<script src="src/components/app/detail/appDetailCtrl.js"></script>
+<script src="src/components/builds/buildsCtrl.js"></script>
+<script src="src/components/build/buildCtrl.js"></script>
+<script src="src/components/laneTemplates/laneTemplatesCtrl.js"></script>
 <!-- /build -->
 
 </html>

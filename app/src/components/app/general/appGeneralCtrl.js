@@ -1,4 +1,4 @@
-angular.module('ship').controller('appGeneralCtrl', appGeneralCtrl);
+ship.controller('appGeneralCtrl', appGeneralCtrl);
 
 function appGeneralCtrl ($scope, $stateParams, notify, shipApiUiWrapper) {
 
