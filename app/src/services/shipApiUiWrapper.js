@@ -1,6 +1,6 @@
 'use strict';
 
-ship.factory('shipApiUiWrapper', shipApiUiWrapper);
+angular.module('ship').factory('shipApiUiWrapper', shipApiUiWrapper);
 
 function shipApiUiWrapper (shipApi, notify, restConverter) {
 

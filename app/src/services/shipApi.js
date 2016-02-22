@@ -1,6 +1,6 @@
 'use strict';
 
-ship.factory('shipApi', shipApi);
+angular.module('ship').factory('shipApi', shipApi);
 
 function shipApi ($http) {
 

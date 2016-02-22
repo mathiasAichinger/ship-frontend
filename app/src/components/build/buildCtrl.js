@@ -1,4 +1,4 @@
-ship.controller('buildCtrl', buildCtrl);
+angular.module('ship').controller('buildCtrl', buildCtrl);
 
 function buildCtrl ($scope, $location, $routeParams, d3) {
 
@@ -23,7 +23,7 @@ function buildCtrl ($scope, $location, $routeParams, d3) {
         console.log(d3);
     }
 
-    
+
 
     /*------------------------------------------------------------------------------------------------------------------
      Scope Methods

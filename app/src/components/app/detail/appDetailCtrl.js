@@ -1,4 +1,4 @@
-ship.controller('appDetailCtrl', appDetailCtrl);
+angular.module('ship').controller('appDetailCtrl', appDetailCtrl);
 
 function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrapper, pathParser) {
     $scope.appId = $stateParams.appId;

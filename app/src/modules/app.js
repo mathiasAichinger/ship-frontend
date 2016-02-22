@@ -1,11 +1,9 @@
-var ship = angular.module('ship', [
+angular.module('ship', [
     'ngRoute',
     'd3',
     'ui.router',
 	'directives'
-]);
-
-ship.config(function ($stateProvider) {
+]).config(function ($stateProvider) {
     $stateProvider
         .state('apps', {
             url: '/apps',

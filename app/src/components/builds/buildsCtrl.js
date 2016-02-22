@@ -1,4 +1,4 @@
-ship.controller('buildsCtrl', buildsCtrl);
+angular.module('ship').controller('buildsCtrl', buildsCtrl);
 
 function buildsCtrl($scope, $stateParams, $state, shipApi) {
 
