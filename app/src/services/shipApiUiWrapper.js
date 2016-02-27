@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('ship').factory('shipApiUiWrapper', shipApiUiWrapper);
-
-function shipApiUiWrapper (shipApi, notify, restConverter) {
+angular.module('ship').factory('shipApiUiWrapper', ['shipApi', 'notify', 'restConverter', function (shipApi, notify, restConverter) {
 
     function _addApp(app, callback) {
         var cb = callback || angular.noop;
@@ -153,3 +151,4 @@ function shipApiUiWrapper (shipApi, notify, restConverter) {
         getLaneTemplate: _getLaneTemplate
     }
 }
+]);

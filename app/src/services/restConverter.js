@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('ship').factory('restConverter', restConverter);
-
-function restConverter () {
+angular.module('ship').factory('restConverter', [function () {
     function _appToRest (app) {
         if (app) {
             return {
@@ -59,4 +57,4 @@ function restConverter () {
         appFromRest: _appFromRest,
         buildFromRest: _buildFromRest
     }
-}
+}]);

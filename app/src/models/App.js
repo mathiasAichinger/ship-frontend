@@ -1,4 +1,4 @@
-function App (id, key, name, description, iconUrl, lane_templates, builds) {
+module.exports = function(id, key, name, description, iconUrl, lane_templates, builds) {
     this.id = id;
     this.key = key;
     this.name = name;

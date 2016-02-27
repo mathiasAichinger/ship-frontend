@@ -1,10 +1,10 @@
-angular.module('ship').controller('appDetailCtrl', appDetailCtrl);
-
-function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrapper, pathParser) {
+angular.module('ship').controller('appDetailCtrl', ['$scope', '$location', '$stateParams', '$state', 'shipApiUiWrapper', 'pathParser',
+function ($scope, $location, $stateParams, $state, shipApiUiWrapper, pathParser) {
     $scope.appId = $stateParams.appId;
     $scope.appLoaded = false;
     $scope.isRemoving = false;
 
+    if ($scope.appId) {
     shipApiUiWrapper.getApp($scope.appId, function (app) {
         if (app) {
             $scope.app = app;
@@ -13,6 +13,7 @@ function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrappe
             $scope.app = {};
         }
     });
+  }
 
     $scope.saveApp = function () {
         shipApiUiWrapper.updateApp($scope.app, function (success) {
@@ -33,3 +34,4 @@ function appDetailCtrl ($scope, $location, $stateParams, $state, shipApiUiWrappe
         });
     }
 }
+]);

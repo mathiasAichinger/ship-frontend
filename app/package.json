@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "devDependencies": {
     "grunt": "latest",
+    "grunt-browserify": "^4.0.1",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-copy": "^0.8.2",
     "grunt-contrib-cssmin": "latest",

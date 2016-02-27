@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('ship').factory('pathParser', pathParser);
-
-function pathParser ($location) {
+angular.module('ship').factory('pathParser', ['$location', function ($location) {
 
     function _endsWith (key) {
         if (key) {
@@ -24,4 +22,4 @@ function pathParser ($location) {
         contains: _contains,
         endsWith: _endsWith
     }
-}
+}]);

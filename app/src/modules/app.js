@@ -2,7 +2,7 @@ angular.module('ship', [
     'ngRoute',
     'd3',
     'ui.router',
-	'directives'
+	  'directives'
 ]).config(function ($stateProvider) {
     $stateProvider
         .state('apps', {
@@ -18,7 +18,7 @@ angular.module('ship', [
             views: {
                 'detailView': {
                     templateUrl: '../src/components/app/list/appListView.html',
-                    controller: 'appsCtrl'
+                    controller: 'appListCtrl'
                 }
             }
         })

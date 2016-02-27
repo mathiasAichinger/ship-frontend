@@ -2,37 +2,31 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
-      my: {
-          src: ['src/modules/*.js', 'src/components/**/*.js', 'src/models/**/*.js', 'src/services/**/*.js'],
-          dest: 'dist/js/<%= pkg.name %>.js'
-      },
+      /* concat all 3rd party js files */
       vendors_js: {
           src: ['bower_components/jquery/dist/jquery.min.js', 'bower_components/angular/angular.min.js', 'bower_components/angular-route/angular-route.min.js', 'bower_components/angular-ui-router/release/angular-ui-router.min.js', 'bower_components/bootstrap/dist/js/bootstrap.min.js', 'bower_components/d3/d3.min.js', 'share/pnotify.custom.min.js'],
-          dest: 'dist/js/vendors.js'
+          dest: '../dist/js/vendors.js'
       },
+      /* concat all 3rd party css files */
       vendors_css: {
-          src: ['bower_components/**/*.min.css', 'share/pnotify.custom.min.css'],
-          dest: 'dist/css/vendors.css'
+          src: ['bower_components/**/*.min.css', 'share/**/*.min.css'],
+          dest: '../dist/css/vendors.css'
       }
     },
     copy: {
+      /* copy html views */
       views: {
         cwd: 'src/components',
         src: '**/*.html',
-        dest: 'dist/src/components',
+        dest: '../dist/src/components',
         expand: true
       },
+      /* copy bootstrap font */
       bootstrap_fonts: {
         cwd: 'bower_components/bootstrap/dist/fonts',
         src: '**/*',
-        dest: 'dist/fonts',
+        dest: '../dist/fonts',
         expand: true
-      }
-    },
-    uglify: {
-      dist: {
-        src: 'dist/js/<%= pkg.name %>.js',
-        dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
     jshint: {
@@ -47,16 +41,31 @@ module.exports = function (grunt) {
         }
       }
     },
+    browserify: {
+      dist: {
+        src: 'src/main.js',
+        dest: '../dist/js/<%= pkg.name %>.js'
+      }
+    },
+    uglify: {
+      options: {
+        mangle: false
+      },
+      js: {
+          src: '../dist/js/<%= pkg.name %>.js',
+          dest: '../dist/js/<%= pkg.name %>.js'
+      }
+    },
     cssmin: {
       dist: {
         src: ['assets/styles/**/*.css', 'src/components/**/*.css'],
-        dest: 'dist/css/<%= pkg.name %>.css'
+        dest: '../dist/css/<%= pkg.name %>.css'
       }
     },
     processhtml: {
       dist: {
         src: 'index.html',
-        dest: 'dist/index.html'
+        dest: '../dist/index.html'
       }
     },
     watch: {
@@ -73,8 +82,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-processhtml');
+  grunt.loadNpmTasks('grunt-browserify');
 
   grunt.registerTask('test', ['jshint', 'qunit']);
 
-  grunt.registerTask('build', ['concat', 'copy', 'cssmin', 'processhtml']);
+  grunt.registerTask('build', ['concat', 'copy', 'browserify', 'uglify', 'cssmin', 'processhtml']);
 };
