@@ -34,7 +34,6 @@ angular.module('ship').controller('buildsCtrl', ['$scope', '$stateParams', '$sta
           {
               return "Pending"
           }
-
           default:
           {
               return "Unknown";
