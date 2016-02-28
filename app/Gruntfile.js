@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     concat: {
       /* concat all 3rd party js files */
       vendors_js: {
-          src: ['bower_components/jquery/dist/jquery.min.js', 'bower_components/angular/angular.min.js', 'bower_components/angular-route/angular-route.min.js', 'bower_components/angular-ui-router/release/angular-ui-router.min.js', 'bower_components/bootstrap/dist/js/bootstrap.min.js', 'bower_components/d3/d3.min.js', 'share/pnotify.custom.min.js'],
+          src: ['bower_components/jquery/dist/jquery.min.js', 'bower_components/angular/angular.min.js', 'bower_components/angular-route/angular-route.min.js', 'bower_components/angular-ui-router/release/angular-ui-router.min.js', 'bower_components/bootstrap/dist/js/bootstrap.min.js', 'share/pnotify.custom.min.js'],
           dest: '../dist/js/vendors.js'
       },
       /* concat all 3rd party css files */
@@ -26,6 +26,12 @@ module.exports = function (grunt) {
         cwd: 'bower_components/bootstrap/dist/fonts',
         src: '**/*',
         dest: '../dist/fonts',
+        expand: true
+      },
+      d3: {
+        cwd: 'bower_components/d3',
+        src: 'd3.min.js',
+        dest: '../dist/js',
         expand: true
       }
     },

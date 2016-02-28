@@ -64,7 +64,7 @@ angular.module('ship', [
                 'detailView': {
                     templateUrl: '../src/components/builds/buildsView.html',
                     controller: 'buildsCtrl'
-                },
+                }
             }
         })
         .state('app.logs', {
